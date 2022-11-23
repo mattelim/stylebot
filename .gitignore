@@ -4,7 +4,6 @@ Icon?
 ._*
 .Spotlight-V100
 .Trashes
-dist
 firefox-dist
 node_modules
 yarn-error.log
