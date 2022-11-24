@@ -1,4 +1,4 @@
-import Readability from 'readability';
+import { Readability } from '@mozilla/readability';
 import { ReadabilityArticle } from '@stylebot/types';
 
 export const getDomainUrlAndSource = (): { url: string; source: string } => {
@@ -63,7 +63,7 @@ export const getReadabilityArticle = async (): Promise<ReadabilityArticle> => {
       try {
         const article = new Readability(doc).parse();
 
-        if (article.content) {
+        if (article?.content) {
           resolve(article);
           return;
         }

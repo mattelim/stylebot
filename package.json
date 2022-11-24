@@ -105,7 +105,7 @@
     "prettier": "^2.0.5",
     "prettier-eslint": "^11.0.0",
     "progress-bar-webpack-plugin": "^2.1.0",
-    "readability": "mozilla/readability#master",
+    "@mozilla/readability": "^0.4.2",
     "requirejs": "^2.3.6",
     "sass": "^1.56.1",
     "sass-loader": "^13.2.0",
