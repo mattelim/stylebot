@@ -103,19 +103,24 @@ const config = {
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
-            options: { importLoaders: 2 },
+            options: {
+              importLoaders: 2,
+            },
           },
           {
             loader: 'postcss-loader',
             options: {
-              plugins: () => [
-                require('cssnano')({
-                  preset: 'default',
-                }),
-                require('postcss-rem-to-pixel')({
-                  propList: ['*'],
-                }),
-              ],
+              postcssOptions: {
+                plugins: () => [
+                  require('cssnano')({
+                    preset: 'default',
+                  }),
+                  require('postcss-rem-to-pixel')({
+                    propList: ['*'],
+                  }),
+                  require('autoprefixer'),
+                ],
+              },
             },
           },
           'sass-loader',
