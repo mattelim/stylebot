@@ -55,7 +55,7 @@ export default Vue.extend({
   data(): {
     showImportErrorAlert: boolean;
     showImportSuccessAlert: boolean;
-    importError: string | DOMException | null;
+    importError: unknown;
   } {
     return {
       importError: null,
