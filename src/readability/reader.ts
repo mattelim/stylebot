@@ -27,7 +27,7 @@ const initCss = async (root: ShadowRoot): Promise<void> => {
 const initShadowDOM = async (): Promise<HTMLElement> => {
   const host = document.createElement('div');
   const hostStyle =
-    'top: 0; height: 100%; width: 100%; position: fixed; z-index: 10000;';
+    'inset: 0; height: 100%; width: 100%; position: fixed; z-index: 10000;';
 
   host.id = 'stylebot-reader';
   host.setAttribute('style', hostStyle);

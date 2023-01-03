@@ -7,7 +7,6 @@
 export const showLoader = (): void => {
   const style = document.createElement('style');
 
-  style.type = 'text/css';
   style.setAttribute('id', 'stylebot-reader-loading');
   style.appendChild(
     document.createTextNode('body *:not(#stylebot) { display: none; }')
