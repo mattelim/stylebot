@@ -6,7 +6,6 @@ const webpack = require('webpack');
 
 const { VueLoaderPlugin } = require('vue-loader');
 const CopyPlugin = require('copy-webpack-plugin');
-const ExtensionReloader = require('webpack-extension-reloader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
@@ -255,14 +254,6 @@ if (config.mode === 'production') {
       'process.env': {
         NODE_ENV: '"production"',
       },
-    }),
-  ]);
-}
-
-if (process.env.HMR === 'true') {
-  config.plugins = (config.plugins || []).concat([
-    new ExtensionReloader({
-      manifest: __dirname + '/src/extension/manifest.json',
     }),
   ]);
 }
