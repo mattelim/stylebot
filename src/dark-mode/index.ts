@@ -1,6 +1,6 @@
-import * as dedent from 'dedent';
-import * as postcss from 'postcss';
-import * as tinycolor from 'tinycolor2';
+import dedent from 'dedent';
+import postcss from 'postcss';
+import tinycolor from 'tinycolor2';
 
 import { getSelector } from '@stylebot/css';
 
@@ -156,7 +156,9 @@ const getCss = (): string => {
     }
   });
 
-  root.walkDecls(decl => (decl.important = true));
+  root.walkDecls(decl => {
+    decl.important = true;
+  });
   return root.toString();
 };
 

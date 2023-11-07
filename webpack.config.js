@@ -6,7 +6,6 @@ const webpack = require('webpack');
 
 const { VueLoaderPlugin } = require('vue-loader');
 const CopyPlugin = require('copy-webpack-plugin');
-const ExtensionReloader = require('webpack-extension-reloader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
@@ -103,19 +102,24 @@ const config = {
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
-            options: { importLoaders: 2 },
+            options: {
+              importLoaders: 2,
+            },
           },
           {
             loader: 'postcss-loader',
             options: {
-              plugins: () => [
-                require('cssnano')({
-                  preset: 'default',
-                }),
-                require('postcss-rem-to-pixel')({
-                  propList: ['*'],
-                }),
-              ],
+              postcssOptions: {
+                plugins: () => [
+                  require('cssnano')({
+                    preset: 'default',
+                  }),
+                  require('postcss-rem-to-pixel')({
+                    propList: ['*'],
+                  }),
+                  require('autoprefixer'),
+                ],
+              },
             },
           },
           'sass-loader',
@@ -250,14 +254,6 @@ if (config.mode === 'production') {
       'process.env': {
         NODE_ENV: '"production"',
       },
-    }),
-  ]);
-}
-
-if (process.env.HMR === 'true') {
-  config.plugins = (config.plugins || []).concat([
-    new ExtensionReloader({
-      manifest: __dirname + '/src/extension/manifest.json',
     }),
   ]);
 }

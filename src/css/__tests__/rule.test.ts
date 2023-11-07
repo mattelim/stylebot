@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const dedent = require('dedent');
+import dedent from 'ts-dedent';
+
 import { getRule, addEmptyRule, removeEmptyRules } from '../';
 
 describe('rule', () => {

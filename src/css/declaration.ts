@@ -12,7 +12,9 @@ export const addDeclaration = (
   const root = postcss.parse(css);
   const rules: Array<postcss.Rule> = [];
 
-  root.walkRules(selector, rule => rules.push(rule));
+  root.walkRules(selector, rule => {
+    rules.push(rule);
+  });
   const rule = rules.length > 0 ? rules[0] : null;
 
   if (!rule) {
@@ -66,7 +68,7 @@ export const appendImportantToDeclarations = (css: string): string => {
     if (node.type === 'atrule') {
       return true;
     } else if (node.type === 'decl' || node.type === 'rule') {
-      return isAncestorAnAtRule(node.parent);
+      return isAncestorAnAtRule(node.parent ?? node);
     } else {
       return false;
     }

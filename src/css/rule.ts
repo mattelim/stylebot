@@ -4,7 +4,9 @@ export const getRule = (css: string, selector: string): postcss.Rule | null => {
   const root = postcss.parse(css);
   const matchingRules: Array<postcss.Rule> = [];
 
-  root.walkRules(selector, rule => matchingRules.push(rule));
+  root.walkRules(selector, rule => {
+    matchingRules.push(rule);
+  });
   return matchingRules.length > 0 ? matchingRules[0] : null;
 };
 
