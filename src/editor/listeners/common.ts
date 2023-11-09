@@ -26,7 +26,6 @@ export const toggleReadability = ({
   state: State;
   dispatch: Dispatch;
 }): void => {
-  console.log('hi readability');
   if (state.readability) {
     dispatch('applyReadability', false);
   } else {

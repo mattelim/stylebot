@@ -4,7 +4,7 @@
       <style-component v-for="style in styles" :key="style.url" :url="style.url" :disable-toggle="isOpen"
         :initial-enabled="style.enabled" />
 
-      <readability :initial-readability="readability" :tab="tab" />
+      <readability :initial-readability="readability" />
 
       <toggle-stylebot :is-open="isOpen" :tab="tab" />
 
@@ -70,7 +70,7 @@ export default Vue.extend({
         this.isOpen = isOpen;
       });
 
-      // the readability prop is only retrieved once
+      // 🤔 the readability prop is only retrieved once
       getStyles(this.tab, ({ styles, defaultStyle }) => {
         this.styles = styles.filter(style => style.css);
         this.readability = !!defaultStyle && defaultStyle.readability;
