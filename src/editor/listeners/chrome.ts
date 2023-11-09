@@ -17,6 +17,9 @@ const initChromeListener = (store: Store<State>): void => {
 
   chrome.runtime.onMessage.addListener(
     (message: TabMessage, _, sendResponse: (response: boolean) => void) => {
+      console.log("Listeners added!");
+      console.log(message);
+
       if (window !== window.top) {
         return;
       }
@@ -40,6 +43,7 @@ const initChromeListener = (store: Store<State>): void => {
           applyReadability();
         }
       } else if (message.name === 'ToggleReadabilityForTab') {
+        console.log('hi readability 2')   // ❌
         toggleReadability({ state, dispatch });
       } else if (message.name === 'ApplyStylesToTab') {
         applyStyles({ dispatch }, message.defaultStyle, message.styles);

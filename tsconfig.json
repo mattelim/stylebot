@@ -1,18 +1,34 @@
 {
-  "include": ["./*.d.ts", "./src/**/*"],
-  "exclude": ["node_modules"],
-
+  "include": [
+    "./*.d.ts",
+    "./src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
   "compilerOptions": {
-    "strict": true,
+    "strict": false,
     "module": "esnext",
-    "lib": ["dom", "esnext", "dom.iterable", "es2019"],
+    "lib": [
+      "dom",
+      "esnext",
+      "dom.iterable",
+      "es2019"
+    ],
     "downlevelIteration": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "types": ["chrome", "jest", "node"],
+    "types": [
+      "chrome",
+      "jest",
+      "node"
+    ],
+    "noImplicitAny": false,
     "baseUrl": "src",
     "paths": {
-      "@stylebot/*": ["*/index"]
+      "@stylebot/*": [
+        "*/index"
+      ]
     }
   }
 }

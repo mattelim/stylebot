@@ -1,15 +1,10 @@
 <template>
   <div class="popup">
     <b-list-group v-if="tab && tab.id" class="list-group">
-      <style-component
-        v-for="style in styles"
-        :key="style.url"
-        :url="style.url"
-        :disable-toggle="isOpen"
-        :initial-enabled="style.enabled"
-      />
+      <style-component v-for="style in styles" :key="style.url" :url="style.url" :disable-toggle="isOpen"
+        :initial-enabled="style.enabled" />
 
-      <readability :initial-readability="readability" />
+      <readability :initial-readability="readability" :tab="tab" />
 
       <toggle-stylebot :is-open="isOpen" :tab="tab" />
 
@@ -75,6 +70,7 @@ export default Vue.extend({
         this.isOpen = isOpen;
       });
 
+      // the readability prop is only retrieved once
       getStyles(this.tab, ({ styles, defaultStyle }) => {
         this.styles = styles.filter(style => style.css);
         this.readability = !!defaultStyle && defaultStyle.readability;

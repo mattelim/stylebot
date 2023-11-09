@@ -86,6 +86,7 @@ export default Vue.extend({
       },
 
       set(value: boolean): void {
+        console.log('hi readability from editor!')  // ✅
         this.$store.dispatch('applyReadability', value);
       },
     },
